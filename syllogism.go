@@ -38,7 +38,7 @@ type Conclusion struct {
 	Negative bool
 }
 
-// Term is the subject or predicate of a proposition, expressing a concept.
+// Term is the subject or predicate of a proposition expressing a concept.
 type Term []string
 
 // Conclude generates a conclusion.

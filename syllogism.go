@@ -46,9 +46,9 @@ func (s Syllogism) Conclude() (Conclusion, error) {
 	if !eq(s.PropositionMajor.Subject, s.PropositionMinor.Predicate) {
 		return Conclusion{}, fmt.Errorf("Subject of major proposition (%v) doesn't match predicate of minor proposition (%v)", s.PropositionMajor.Subject, s.PropositionMinor.Predicate)
 	}
-	if s.PropositionMajor.Verb != s.PropositionMinor.Verb {
-		return Conclusion{}, fmt.Errorf("verbs (%v, %v) of propositions don't match", s.PropositionMajor.Verb, s.PropositionMinor.Verb)
-	}
+	// if s.PropositionMajor.Verb != s.PropositionMinor.Verb {
+	// 	return Conclusion{}, fmt.Errorf("verbs (%v, %v) of propositions don't match", s.PropositionMajor.Verb, s.PropositionMinor.Verb)
+	// }
 
 	var conclusion Conclusion
 	conclusion.Verb = s.PropositionMajor.Verb

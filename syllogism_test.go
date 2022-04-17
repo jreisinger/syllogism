@@ -101,6 +101,29 @@ func TestSyllogism(t *testing.T) {
 				Verb: "be",
 			},
 		},
+		{
+			Syllogism{
+				Proposition{
+					Type:      0,
+					Subject:   Term{"bird"},
+					Verb:      "lay",
+					Predicate: Term{"eggs"},
+				},
+				Proposition{
+					Type:      1,
+					Subject:   Term{"elephant"},
+					Verb:      "be",
+					Negative:  true,
+					Predicate: Term{"bird"},
+				},
+				Term{"bird"},
+			},
+			Conclusion{
+				Term:     Term{"elephant", "eggs"},
+				Verb:     "lay",
+				Negative: true,
+			},
+		},
 	}
 	for _, tc := range testcases {
 		conclusion, err := tc.syllogism.Conclude()

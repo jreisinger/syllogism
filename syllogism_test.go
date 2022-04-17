@@ -12,93 +12,93 @@ func TestSyllogism(t *testing.T) {
 		{
 			Syllogism{
 				Proposition{
-					Subject:   []Term{"rational", "animal"},
+					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
-					Predicate: []Term{"mortal"},
+					Predicate: Term{"mortal"},
 					Type:      0,
 				},
 				Proposition{
-					Subject:   []Term{"socrates"},
+					Subject:   Term{"socrates"},
 					Verb:      "be",
-					Predicate: []Term{"rational", "animal"},
+					Predicate: Term{"rational", "animal"},
 					Type:      1,
 				},
-				[]Term{"rational", "animal"},
+				Term{"rational", "animal"},
 			},
 			Conclusion{
-				Terms: []Term{"socrates", "mortal"},
-				Verb:  "be",
+				Term: Term{"socrates", "mortal"},
+				Verb: "be",
 			},
 		},
 		{
 			Syllogism{
 				Proposition{
-					Subject:   []Term{"rational", "animal"},
+					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
 					Negative:  true,
-					Predicate: []Term{"mortal"},
+					Predicate: Term{"mortal"},
 					Type:      0,
 					False:     true,
 				},
 				Proposition{
-					Subject:   []Term{"socrates"},
+					Subject:   Term{"socrates"},
 					Verb:      "be",
-					Predicate: []Term{"rational", "animal"},
+					Predicate: Term{"rational", "animal"},
 					Type:      1,
 				},
-				[]Term{"rational", "animal"},
+				Term{"rational", "animal"},
 			},
 			Conclusion{
-				Terms: []Term{"socrates", "mortal"},
-				Verb:  "be",
+				Term: Term{"socrates", "mortal"},
+				Verb: "be",
 			},
 		},
 		{
 			Syllogism{
 				Proposition{
-					Subject:   []Term{"rational", "animal"},
+					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
-					Predicate: []Term{"mortal"},
+					Predicate: Term{"mortal"},
 					Type:      0,
 				},
 				Proposition{
-					Subject:   []Term{"socrates"},
+					Subject:   Term{"socrates"},
 					Verb:      "be",
 					Negative:  true,
-					Predicate: []Term{"rational", "animal"},
+					Predicate: Term{"rational", "animal"},
 					Type:      1,
 					False:     true,
 				},
-				[]Term{"rational", "animal"},
+				Term{"rational", "animal"},
 			},
 			Conclusion{
-				Terms: []Term{"socrates", "mortal"},
-				Verb:  "be",
+				Term: Term{"socrates", "mortal"},
+				Verb: "be",
 			},
 		},
 		{
 			Syllogism{
 				Proposition{
-					Subject:   []Term{"rational", "animal"},
+					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
 					Negative:  true,
-					Predicate: []Term{"mortal"},
+					Predicate: Term{"mortal"},
 					Type:      0,
 					False:     true,
 				},
 				Proposition{
-					Subject:   []Term{"socrates"},
+					Subject:   Term{"socrates"},
 					Verb:      "be",
 					Negative:  true,
-					Predicate: []Term{"rational", "animal"},
+					Predicate: Term{"rational", "animal"},
 					Type:      1,
 					False:     true,
 				},
-				[]Term{"rational", "animal"},
+				Term{"rational", "animal"},
 			},
 			Conclusion{
-				Terms: []Term{"socrates", "mortal"},
-				Verb:  "be",
+				Term: Term{"socrates", "mortal"},
+				Verb: "be",
 			},
 		},
 	}
@@ -107,8 +107,8 @@ func TestSyllogism(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		if !eq(conclusion.Terms, tc.conclusion.Terms) {
-			t.Fatalf("got conclusion terms: %v\nexpected conclusion terms: %v", conclusion.Terms, tc.conclusion.Terms)
+		if !eq(conclusion.Term, tc.conclusion.Term) {
+			t.Fatalf("got conclusion terms: %v\nexpected conclusion terms: %v", conclusion.Term, tc.conclusion.Term)
 		}
 		if conclusion.Verb != tc.conclusion.Verb {
 			t.Fatalf("got conclusion verb: %v\nexpected conclusion verb: %v", conclusion.Verb, tc.conclusion.Verb)

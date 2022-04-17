@@ -17,28 +17,29 @@ type PropositionType int32
 type Syllogism struct {
 	PropositionMajor Proposition
 	PropositionMinor Proposition
-	Middle           []Term
+	Middle           Term
 }
 
 // Proposition is a declarative sentence, affirmative or negative, that can be
 // either true or false.
 type Proposition struct {
 	Type      PropositionType
-	Subject   []Term
+	Subject   Term
 	Verb      string // e.g., be
 	Negative  bool   // e.g., not be
-	Predicate []Term
+	Predicate Term
 	False     bool
 }
 
 // Conclusion is the application of a major proposition to a minor proposition.
 type Conclusion struct {
-	Terms    []Term
+	Term     Term
 	Verb     string
 	Negative bool
 }
 
-type Term string
+// Term is the subject or predicate of a proposition, expressing a concept.
+type Term []string
 
 // Conclude generates a conclusion.
 func (s Syllogism) Conclude() (Conclusion, error) {
@@ -67,14 +68,14 @@ func (s Syllogism) Conclude() (Conclusion, error) {
 		conclusion.Negative = !conclusion.Negative
 	}
 
-	var t []Term
+	var t Term
 	t = append(t, s.PropositionMinor.Subject...)
 	t = append(t, s.PropositionMajor.Predicate...)
-	conclusion.Terms = append(conclusion.Terms, t...)
+	conclusion.Term = append(conclusion.Term, t...)
 	return conclusion, nil
 }
 
-func eq(a, b []Term) bool {
+func eq(a, b Term) bool {
 	if len(a) != len(b) {
 		return false
 	}

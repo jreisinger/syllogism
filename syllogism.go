@@ -1,6 +1,6 @@
 // Package syllogism implements syllogism, the basic form of deductive argument.
 // Syllogism is a part of Aristotelian (or common sense) logic.
-package main
+package syllogism
 
 import (
 	"fmt"

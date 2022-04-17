@@ -12,16 +12,16 @@ func TestSyllogism(t *testing.T) {
 		{
 			Syllogism{
 				Proposition{
+					Type:      0,
 					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
 					Predicate: Term{"mortal"},
-					Type:      0,
 				},
 				Proposition{
+					Type:      1,
 					Subject:   Term{"socrates"},
 					Verb:      "be",
 					Predicate: Term{"rational", "animal"},
-					Type:      1,
 				},
 				Term{"rational", "animal"},
 			},
@@ -33,18 +33,18 @@ func TestSyllogism(t *testing.T) {
 		{
 			Syllogism{
 				Proposition{
+					Type:      0,
 					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
 					Negative:  true,
 					Predicate: Term{"mortal"},
-					Type:      0,
 					False:     true,
 				},
 				Proposition{
+					Type:      1,
 					Subject:   Term{"socrates"},
 					Verb:      "be",
 					Predicate: Term{"rational", "animal"},
-					Type:      1,
 				},
 				Term{"rational", "animal"},
 			},
@@ -56,17 +56,17 @@ func TestSyllogism(t *testing.T) {
 		{
 			Syllogism{
 				Proposition{
+					Type:      0,
 					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
 					Predicate: Term{"mortal"},
-					Type:      0,
 				},
 				Proposition{
+					Type:      1,
 					Subject:   Term{"socrates"},
 					Verb:      "be",
 					Negative:  true,
 					Predicate: Term{"rational", "animal"},
-					Type:      1,
 					False:     true,
 				},
 				Term{"rational", "animal"},
@@ -79,19 +79,19 @@ func TestSyllogism(t *testing.T) {
 		{
 			Syllogism{
 				Proposition{
+					Type:      0,
 					Subject:   Term{"rational", "animal"},
 					Verb:      "be",
 					Negative:  true,
 					Predicate: Term{"mortal"},
-					Type:      0,
 					False:     true,
 				},
 				Proposition{
+					Type:      1,
 					Subject:   Term{"socrates"},
 					Verb:      "be",
 					Negative:  true,
 					Predicate: Term{"rational", "animal"},
-					Type:      1,
 					False:     true,
 				},
 				Term{"rational", "animal"},

@@ -41,6 +41,16 @@ func TestSyllogism(t *testing.T) {
 			Proposition{false, "snakes", false, "reptiles"},
 			Proposition{false, "snakes", true, "fur"},
 		},
+		{ // Darii (AII-1)
+			Proposition{false, "rabbits", false, "fur"},
+			Proposition{true, "pets", false, "rabbits"},
+			Proposition{true, "pets", false, "fur"},
+		},
+		{ // Ferio (EIO-1)
+			Proposition{false, "homework", true, "fun"},
+			Proposition{true, "reading", false, "homework"},
+			Proposition{true, "reading", true, "fun"},
+		},
 	}
 	for _, tc := range testcases {
 		conclusion, err := Conclude(tc.major, tc.minor)

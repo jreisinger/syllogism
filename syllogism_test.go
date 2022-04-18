@@ -11,10 +11,23 @@ func TestSyllogism(t *testing.T) {
 		minor      Proposition
 		conclusion Proposition
 	}{
+		// Classical syllogism example.
 		{
-			Proposition{[]string{"rational animal"}, []string{"mortal"}},
-			Proposition{[]string{"socrates"}, []string{"rational animal"}},
-			Proposition{[]string{"socrates"}, []string{"mortal"}},
+			Proposition{false, "rational animals", false, "mortal"},
+			Proposition{false, "socrates", false, "rational animals"},
+			Proposition{false, "socrates", false, "mortal"},
+		},
+
+		// http://ceur-ws.org/Vol-1412/3o.pdf
+		{
+			Proposition{false, "police dogs", true, "vicious"},
+			Proposition{true, "highly trained dogs", false, "vicious"},
+			Proposition{true, "highly trained dogs", true, "police dogs"},
+		},
+		{
+			Proposition{false, "nutritional things", false, "expensive"},
+			Proposition{true, "vitamin tablets", true, "expensive"},
+			Proposition{true, "vitamin tablets", true, "nutritional things"},
 		},
 	}
 	for _, tc := range testcases {
@@ -25,6 +38,5 @@ func TestSyllogism(t *testing.T) {
 		if !reflect.DeepEqual(conclusion, tc.conclusion) {
 			t.Fatalf("\nGot: %+v\nExp: %+v", conclusion, tc.conclusion)
 		}
-		t.Logf("\nmajor: %v\nminor: %v\nconcl: %v", tc.major, tc.minor, conclusion)
 	}
 }

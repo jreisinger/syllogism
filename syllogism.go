@@ -4,38 +4,34 @@ package syllogism
 
 import "fmt"
 
-// Proposition is a declarative sentence.
+// Proposition states something about all or some of the the subjects. It can be
+// affirmative or negative.
 type Proposition struct {
-	Subject   Term
-	Predicate Term
+	Some      bool
+	Subject   string
+	Negative  bool
+	Predicate string
 }
 
-// Term is the subject or predicate of a proposition expressing a concept.
-type Term []string
-
-// Conclude connects the subject and predicate terms in its two propositions.
-// Major proposition states a general principle, minor proposition brings a
-// particalur case under that priciple.
+// Conclude connects its two propositions through a middle term. Major
+// proposition states a general principle, minor proposition brings a particular
+// case under that principle.
 func Conclude(major, minor Proposition) (Proposition, error) {
 	var conclusion Proposition
+
 	switch {
-	case eq(major.Subject, minor.Predicate):
+	case major.Subject == minor.Predicate:
 		conclusion.Subject = minor.Subject
 		conclusion.Predicate = major.Predicate
+	case major.Predicate == minor.Predicate:
+		conclusion.Subject = minor.Subject
+		conclusion.Predicate = major.Subject
 	default:
 		return conclusion, fmt.Errorf("can't conclude from %v and %v", major, minor)
 	}
-	return conclusion, nil
-}
 
-func eq(a, b Term) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
+	conclusion.Some = major.Some || minor.Some
+	conclusion.Negative = major.Negative || minor.Negative
+
+	return conclusion, nil
 }

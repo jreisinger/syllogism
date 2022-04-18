@@ -29,6 +29,13 @@ func TestSyllogism(t *testing.T) {
 			Proposition{true, "vitamin tablets", true, "expensive"},
 			Proposition{true, "vitamin tablets", true, "nutritional things"},
 		},
+
+		// https://en.wikipedia.org/wiki/Syllogism#Examples
+		{
+			Proposition{false, "reptiles", true, "fur"},
+			Proposition{false, "snakes", false, "reptiles"},
+			Proposition{false, "snakes", true, "fur"},
+		},
 	}
 	for _, tc := range testcases {
 		conclusion, err := Conclude(tc.major, tc.minor)

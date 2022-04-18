@@ -31,7 +31,12 @@ func TestSyllogism(t *testing.T) {
 		},
 
 		// https://en.wikipedia.org/wiki/Syllogism#Examples
-		{
+		{ // Barbara (AAA-1)
+			Proposition{false, "men", false, "mortal"},
+			Proposition{false, "Greeks", false, "men"},
+			Proposition{false, "Greeks", false, "mortal"},
+		},
+		{ // Celarent (EAE-1)
 			Proposition{false, "reptiles", true, "fur"},
 			Proposition{false, "snakes", false, "reptiles"},
 			Proposition{false, "snakes", true, "fur"},

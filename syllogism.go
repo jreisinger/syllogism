@@ -1,5 +1,5 @@
-// Package syllogism implements syllogism, the basic form of deductive argument.
-// Syllogism is part of Aristotelian (or common sense) logic.
+// Package syllogism implements the basic form of deductive argument - a
+// syllogism.  Syllogism is part of Aristotelian (or common sense) logic.
 package syllogism
 
 import "fmt"
@@ -10,10 +10,10 @@ type Proposition struct {
 	Some      bool
 	Subject   string
 	Negative  bool
-	Predicate string
+	Predicate string // term that says something about the subject
 }
 
-// Conclude connects its two propositions through a middle term. Major
+// Conclude connects its two propositions (through a middle term). Major
 // proposition states a general principle, minor proposition brings a particular
 // case under that principle.
 func Conclude(major, minor Proposition) (Proposition, error) {

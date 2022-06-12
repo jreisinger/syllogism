@@ -3,5 +3,6 @@
 
 ```
 go test
-go doc # http://localhost:6060/pkg/github.com/jreisinger/syllogism/
+go doc -all
+godoc # http://localhost:6060/pkg/github.com/jreisinger/syllogism/
 ```

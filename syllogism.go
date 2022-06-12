@@ -1,5 +1,11 @@
-// Package syllogism implements the basic form of deductive argument - a
-// syllogism.  Syllogism is part of Aristotelian (or common sense) logic.
+// Package syllogism implements the basic form of deductive argument, a
+// syllogism. Syllogism is part of Aristotelian (or common sense) logic.
+//
+// Syllogism connects the subject and predicate terms of its conclusion through
+// its middle term in its two propositions. The first of which states a general
+// principle and the second brings a particular case under that principle. The
+// conclusion then demonstrates the result of applying the general principle to
+// the particular case.
 package syllogism
 
 import "fmt"
@@ -8,7 +14,7 @@ import "fmt"
 // affirmative or negative.
 type Proposition struct {
 	Some      bool
-	Subject   string
+	Subject   string // term about which something is said in the predicate
 	Negative  bool
 	Predicate string // term that says something about the subject
 }

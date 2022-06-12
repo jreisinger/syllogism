@@ -9,25 +9,19 @@ import (
 
 // Classical syllogism example.
 func Example() {
-	major := Proposition{
-		Subject:   "rational animals",
-		Predicate: "mortal",
-	}
-	minor := Proposition{
-		Subject:   "Socrates",
-		Predicate: "rational animals",
-	}
+	major := Proposition{Subject: "rational animals", Predicate: "mortal"}
+	minor := Proposition{Subject: "Socrates", Predicate: "rational animals"}
 	conclusion, err := Conclude(major, minor)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("%s are %s\n", major.Subject, major.Predicate)
-	fmt.Printf("%s is one of the %s\n", minor.Subject, minor.Predicate)
-	fmt.Printf("therefore %s is %s\n", conclusion.Subject, conclusion.Predicate)
-	// Output: rational animals are mortal
-	// Socrates is one of the rational animals
-	// therefore Socrates is mortal
+	fmt.Printf("Major proposition: %s are %s.\n", major.Subject, major.Predicate)
+	fmt.Printf("Minor proposition: %s is one of the %s.\n", minor.Subject, minor.Predicate)
+	fmt.Printf("Conclusion: therefore %s is %s.\n", conclusion.Subject, conclusion.Predicate)
+	// Output: Major proposition: rational animals are mortal.
+	// Minor proposition: Socrates is one of the rational animals.
+	// Conclusion: therefore Socrates is mortal.
 }
 
 func TestSyllogism(t *testing.T) {

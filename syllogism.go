@@ -14,9 +14,9 @@ import "fmt"
 // Proposition states something about all or some of the the subjects. It can be
 // affirmative or negative.
 type Proposition struct {
-	Some      bool
+	Some      bool   // or all
 	Subject   string // term about which something is said in the predicate
-	Negative  bool
+	Negative  bool   // or affirmative
 	Predicate string // term that says something about the subject
 }
 
